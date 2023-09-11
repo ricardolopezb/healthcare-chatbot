@@ -12,12 +12,12 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
-training = pd.read_csv('Data/Training.csv')
-testing= pd.read_csv('Data/Testing.csv')
-cols= training.columns
-cols= cols[:-1]
-x = training[cols]
-y = training['prognosis']
+training = pd.read_csv('Data/Training.csv') #Training csv
+testing= pd.read_csv('Data/Testing.csv') #Testing csv
+cols= training.columns #Columns for testing
+cols= cols[:-1] # elimina la ultimacolumna delmarreglo de columnas pq es el tag de las enfermedades
+x = training[cols] # contiene todas las columnas menos la que tiene el tag de las enfermedades
+y = training['prognosis'] # contiene la 
 y1= y
 
 
@@ -29,40 +29,29 @@ le.fit(y)
 y = le.transform(y)
 
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42) #Separa el dataset en train y test con un seed de 42
 testx    = testing[cols]
 testy    = testing['prognosis']  
-testy    = le.transform(testy)
+testy    = le.transform(testy) #transforma los tags a valores numericos
 
 
-clf1  = DecisionTreeClassifier()
-clf = clf1.fit(x_train,y_train)
+clf1  = DecisionTreeClassifier() # lo hace el decision tree con los datos de train
+clf = clf1.fit(x_train,y_train) # le mete los datos
 # print(clf.score(x_train,y_train))
 # print ("cross result========")
-scores = cross_val_score(clf, x_test, y_test, cv=3)
+scores = cross_val_score(clf, x_test, y_test, cv=3) #lo testea con el train
 # print (scores)
-print (scores.mean())
+print (scores.mean()) # muestra la media
 
-
-model=SVC()
-model.fit(x_train,y_train)
+model=SVC() # hace lo mismo con svm
+model.fit(x_train,y_train) # trainea el modelo
 print("for svm: ")
-print(model.score(x_test,y_test))
+print(model.score(x_test,y_test)) # lo testea
 
-importances = clf.feature_importances_
+#sortea las features importantes del modelo para ver que onda
+importances = clf.feature_importances_ 
 indices = np.argsort(importances)[::-1]
 features = cols
-
-def readn(nstr):
-    engine = pyttsx3.init()
-
-    engine.setProperty('voice', "english+f5")
-    engine.setProperty('rate', 130)
-
-    engine.say(nstr)
-    engine.runAndWait()
-    engine.stop()
-
 
 severityDictionary=dict()
 description_list = dict()
@@ -70,8 +59,11 @@ precautionDictionary=dict()
 
 symptoms_dict = {}
 
+#matchea el sintoma con su respectiva columna
 for index, symptom in enumerate(x):
        symptoms_dict[symptom] = index
+
+#metodo que hace el calculo de la severidad en funcion de los dias que se tiene el sintoma
 def calc_condition(exp,days):
     sum=0
     for item in exp:
@@ -81,7 +73,7 @@ def calc_condition(exp,days):
     else:
         print("It might not be that bad but you should take precautions.")
 
-
+# matche ala descripcion con el sintoma
 def getDescription():
     global description_list
     with open('MasterData/symptom_Description.csv') as csv_file:
@@ -93,7 +85,8 @@ def getDescription():
 
 
 
-
+# lee el csv de severidad y lo mete en un diccionario
+# lo mapea con su indice de severidad segun el modelo
 def getSeverityDict():
     global severityDictionary
     with open('MasterData/symptom_severity.csv') as csv_file:
@@ -107,7 +100,8 @@ def getSeverityDict():
         except:
             pass
 
-
+# lee el csv de precauciones y lo mete en un diccionario
+# es un mapa que te dice que hacer en cada caso de enfermedad que te detecte la ai
 def getprecautionDict():
     global precautionDictionary
     with open('MasterData/symptom_precaution.csv') as csv_file:
@@ -125,6 +119,7 @@ def getInfo():
     name=input("")
     print("Hello, ",name)
 
+# metodo que hace el match de los sintomas con las enfermedades y los agrega a las posible diseases list
 def check_pattern(dis_list,inp):
     pred_list=[]
     inp=inp.replace(' ','_')
@@ -135,7 +130,9 @@ def check_pattern(dis_list,inp):
         return 1,pred_list
     else:
         return 0,[]
+# metodo que hace la prediccion de la enfermedad en base a los sintomas que le das
 def sec_predict(symptoms_exp):
+    # entrena el modelo con los datos de train
     df = pd.read_csv('Data/Training.csv')
     X = df.iloc[:, :-1]
     y = df['prognosis']
@@ -143,20 +140,23 @@ def sec_predict(symptoms_exp):
     rf_clf = DecisionTreeClassifier()
     rf_clf.fit(X_train, y_train)
 
+    #detecta los sintomas que le pasaste y los mete en un vector
     symptoms_dict = {symptom: index for index, symptom in enumerate(X)}
+    #crea un arreglo de 0 y lo llena con 1 en los indices de los sintomas que le pasaste
     input_vector = np.zeros(len(symptoms_dict))
     for item in symptoms_exp:
       input_vector[[symptoms_dict[item]]] = 1
-
+    #devuelve la prediccion del modelo
     return rf_clf.predict([input_vector])
 
-
+#dado el nodo agarra la disease y la imprime
 def print_disease(node):
     node = node[0]
-    val  = node.nonzero() 
-    disease = le.inverse_transform(val[0])
-    return list(map(lambda x:x.strip(),list(disease)))
+    val  = node.nonzero()  # agarra los valores que no son 0 del nodo
+    disease = le.inverse_transform(val[0]) # le hace el inverse transform para que te devuelva el nombre de la enfermedad
+    return list(map(lambda x:x.strip(),list(disease))) # devuelve la enfermedad, borra los espacios en blanco de las enfermedades para devolver un string decente
 
+# metodo que hace el arbol de decision
 def tree_to_code(tree, feature_names):
     tree_ = tree.tree_
     feature_name = [
