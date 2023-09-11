@@ -242,8 +242,8 @@ def tree_to_code(tree, feature_names):
                 print("You may have ", present_disease[0])
                 print(description_list[present_disease[0]])
 
-                # readn(f"You may have {present_disease[0]}")
-                # readn(f"{description_list[present_disease[0]]}")
+                #readn(f"You may have {present_disease[0]}")
+                #eadn(f"{description_list[present_disease[0]]}")
 
             else:
                 print("You may have ", present_disease[0], "or ", second_prediction[0])
