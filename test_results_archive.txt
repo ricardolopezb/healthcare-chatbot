@@ -1,0 +1,448 @@
+DESCRIPTION: My head hurts
+
+openai: ["headache"]
+regular token extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: I am feeling nausea
+
+openai: ['nausea']
+regular token extractor: ['skin_peeling', 'nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: I can't get out of my bed, I don't have any energy
+
+openai: ['lethargy', 'weakness_in_limbs']
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: My back and neck hurt and I am feeling very sad
+
+openai: The symptoms that are most likely referenced in the given statement are:
+- back_pain
+- neck_pain
+- depression
+regular token extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+noun extractor: ['back_pain', 'neck_pain']
+
+
+DESCRIPTION: My head and neck hurt
+
+openai: ["headache", "neck_pain"]
+regular token extractor: ['headache', 'neck_pain']
+noun extractor: ['headache', 'neck_pain']
+
+
+DESCRIPTION: I am feeling a gooey thing in my throat that is making me cough
+
+openai: ['throat_irritation', 'cough']
+regular token extractor: ['skin_peeling', 'cough']
+noun extractor: ['itching', 'vomiting', 'sweating']
+
+
+DESCRIPTION: Me duele la cabeza
+
+openai: ['headache']
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Me siento con náuseas
+
+openai: ['nausea']
+regular token extractor: ['nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: No puedo salir de mi cama, no tengo energía
+
+openai: ['lethargy']
+regular token extractor: ['coma', 'cramps']
+noun extractor: ['coma', 'cramps']
+
+
+DESCRIPTION: Me duelen la espalda y el cuello y me siento muy triste
+
+openai: ["back_pain", "neck_pain", "depression"]
+regular token extractor: ['blister']
+noun extractor: ['blister']
+
+
+DESCRIPTION: Me duelen la cabeza y el cuello
+
+openai: ['headache', 'neck_pain']
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Siento algo pegajoso en la garganta que me hace toser
+
+openai: ['itching', 'skin_rash', 'nodal_skin_eruptions', 'continuous_sneezing', 'shivering', 'chills', 'joint_pain', 'stomach_pain', 'acidity', 'ulcers_on_tongue', 'muscle_wasting', 'vomiting', 'burning_micturition', 'spotting_ urination', 'fatigue', 'weight_...
+regular token extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: My head hurts
+
+openai: ['headache']
+regular token extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: I am feeling nausea
+
+openai: ['nausea']
+regular token extractor: ['skin_peeling', 'nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: I can't get out of my bed, I don't have any energy
+
+openai: ['lethargy', 'fatigue']
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: My back and neck hurt and I am feeling very sad
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular token extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+noun extractor: ['back_pain', 'neck_pain']
+
+
+DESCRIPTION: My head and neck hurt
+
+openai: ["headache", "neck_pain"]
+regular token extractor: ['headache', 'neck_pain']
+noun extractor: ['headache', 'neck_pain']
+
+
+DESCRIPTION: I am feeling a gooey thing in my throat that is making me cough
+
+openai: ['cough', 'throat irritation', 'phlegm']
+regular token extractor: ['skin_peeling', 'cough']
+noun extractor: ['itching', 'vomiting', 'sweating']
+
+
+DESCRIPTION: Me duele la cabeza
+
+openai: ["headache"]
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Me siento con náuseas
+
+openai: ['nausea']
+regular token extractor: ['nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: No puedo salir de mi cama, no tengo energía
+
+openai: ['lethargy', 'weakness_in_limbs']
+regular token extractor: ['coma', 'cramps']
+noun extractor: ['coma', 'cramps']
+
+
+DESCRIPTION: Me duelen la espalda y el cuello y me siento muy triste
+
+openai: ["back_pain", "neck_pain", "depression"]
+regular token extractor: ['blister']
+noun extractor: ['blister']
+
+
+DESCRIPTION: Me duelen la cabeza y el cuello
+
+openai: ["headache", "neck_pain"]
+regular token extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Siento algo pegajoso en la garganta que me hace toser
+
+openai: ['throat_irritation', 'cough']
+regular token extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: My head hurts
+
+openai: ["headache"]
+regular stopwords extractor: ['headache']
+medical stopwords extractor: ['headache']
+
+
+DESCRIPTION: I am feeling nausea
+
+openai: ['nausea']
+regular stopwords extractor: ['skin_peeling', 'nausea']
+medical stopwords extractor: ['skin_peeling', 'nausea']
+
+
+DESCRIPTION: I can't get out of my bed, I don't have any energy
+
+openai: ['lethargy', 'weakness_in_limbs']
+regular stopwords extractor: []
+medical stopwords extractor: []
+
+
+DESCRIPTION: My back and neck hurt and I am feeling very sad
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+medical stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+
+
+DESCRIPTION: My head and neck hurt
+
+openai: ["headache", "neck_pain"]
+regular stopwords extractor: ['headache', 'neck_pain']
+medical stopwords extractor: ['headache', 'neck_pain']
+
+
+DESCRIPTION: I am feeling a gooey thing in my throat that is making me cough
+
+openai: ['throat_irritation', 'cough']
+regular stopwords extractor: ['skin_peeling', 'cough']
+medical stopwords extractor: ['skin_peeling', 'cough']
+
+
+DESCRIPTION: Me duele la cabeza
+
+openai: ['headache']
+regular stopwords extractor: []
+medical stopwords extractor: []
+
+
+DESCRIPTION: Me siento con náuseas
+
+openai: ["nausea"]
+regular stopwords extractor: ['nausea']
+medical stopwords extractor: ['nausea']
+
+
+DESCRIPTION: No puedo salir de mi cama, no tengo energía
+
+openai: ["weakness_in_limbs", "lethargy", "fatigue"]
+regular stopwords extractor: ['coma', 'cramps']
+medical stopwords extractor: ['coma', 'cramps']
+
+
+DESCRIPTION: Me duelen la espalda y el cuello y me siento muy triste
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular stopwords extractor: ['blister']
+medical stopwords extractor: ['blister']
+
+
+DESCRIPTION: Me duelen la cabeza y el cuello
+
+openai: ["headache", "neck_pain"]
+regular stopwords extractor: []
+medical stopwords extractor: []
+
+
+DESCRIPTION: Siento algo pegajoso en la garganta que me hace toser
+
+openai: ['throat_irritation', 'cough']
+regular stopwords extractor: ['headache']
+medical stopwords extractor: ['headache']
+
+
+DESCRIPTION: My head hurts
+
+openai: ['headache']
+regular stopwords extractor: ['headache']
+medical stopwords extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: I am feeling nausea
+
+openai: ['nausea']
+regular stopwords extractor: ['skin_peeling', 'nausea']
+medical stopwords extractor: ['skin_peeling', 'nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: I can't get out of my bed, I don't have any energy
+
+openai: lethargy, fatigue
+regular stopwords extractor: []
+medical stopwords extractor: []
+noun extractor: []
+
+
+DESCRIPTION: My back and neck hurt and I am feeling very sad
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+medical stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+noun extractor: ['back_pain', 'neck_pain']
+
+
+DESCRIPTION: My head and neck hurt
+
+openai: ['headache', 'neck_pain']
+regular stopwords extractor: ['headache', 'neck_pain']
+medical stopwords extractor: ['headache', 'neck_pain']
+noun extractor: ['headache', 'neck_pain']
+
+
+DESCRIPTION: I am feeling a gooey thing in my throat that is making me cough
+
+openai: ['cough', 'throat_irritation']
+regular stopwords extractor: ['skin_peeling', 'cough']
+medical stopwords extractor: ['skin_peeling', 'cough']
+noun extractor: ['itching', 'vomiting', 'sweating']
+
+
+DESCRIPTION: Me duele la cabeza
+
+openai: ["headache"]
+regular stopwords extractor: []
+medical stopwords extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Me siento con náuseas
+
+openai: ['nausea']
+regular stopwords extractor: ['nausea']
+medical stopwords extractor: ['nausea']
+noun extractor: ['nausea']
+
+
+DESCRIPTION: No puedo salir de mi cama, no tengo energía
+
+openai: ['lethargy', 'weakness_in_limbs']
+regular stopwords extractor: ['coma', 'cramps']
+medical stopwords extractor: ['coma', 'cramps']
+noun extractor: ['coma', 'cramps']
+
+
+DESCRIPTION: Me duelen la espalda y el cuello y me siento muy triste
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular stopwords extractor: ['blister']
+medical stopwords extractor: ['blister']
+noun extractor: ['blister']
+
+
+DESCRIPTION: Me duelen la cabeza y el cuello
+
+openai: ["headache", "neck_pain"]
+regular stopwords extractor: []
+medical stopwords extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Siento algo pegajoso en la garganta que me hace toser
+
+openai: ['throat_irritation', 'cough']
+regular stopwords extractor: ['headache']
+medical stopwords extractor: ['headache']
+noun extractor: ['headache']
+
+
+DESCRIPTION: My head hurts
+
+openai: ['headache']
+regular stopwords extractor: ['headache']
+medical stopwords extractor: ['headache']
+noun extractor: []
+
+
+DESCRIPTION: I am feeling nausea
+
+openai: ['nausea']
+regular stopwords extractor: ['skin_peeling', 'nausea', 'nauseas']
+medical stopwords extractor: ['skin_peeling', 'nausea', 'nauseas']
+noun extractor: ['skin_peeling']
+
+
+DESCRIPTION: I can't get out of my bed, I don't have any energy
+
+openai: The symptoms most likely to be referenced in the given statement are "lethargy" and "fatigue".
+regular stopwords extractor: []
+medical stopwords extractor: ['picazon']
+noun extractor: []
+
+
+DESCRIPTION: My back and neck hurt and I am feeling very sad
+
+openai: ['back_pain', 'neck_pain', 'depression']
+regular stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+medical stopwords extractor: ['back_pain', 'neck_pain', 'skin_peeling']
+noun extractor: ['skin_peeling']
+
+
+DESCRIPTION: My head and neck hurt
+
+openai: ["headache", "neck_pain"]
+regular stopwords extractor: ['headache', 'neck_pain']
+medical stopwords extractor: ['headache', 'neck_pain']
+noun extractor: []
+
+
+DESCRIPTION: I am feeling a gooey thing in my throat that is making me cough
+
+openai: ['throat_irritation', 'cough']
+regular stopwords extractor: ['skin_peeling', 'cough']
+medical stopwords extractor: ['skin_peeling', 'cough']
+noun extractor: ['skin_peeling']
+
+
+DESCRIPTION: Me duele la cabeza
+
+openai: ["headache"]
+regular stopwords extractor: []
+medical stopwords extractor: []
+noun extractor: []
+
+
+DESCRIPTION: Me siento con náuseas
+
+openai: ['nausea']
+regular stopwords extractor: ['estreñimiento', 'nauseas', 'nausea']
+medical stopwords extractor: ['estreñimiento', 'picazon', 'nauseas', 'nausea']
+noun extractor: ['nauseas', 'nausea']
+
+
+DESCRIPTION: No puedo salir de mi cama, no tengo energía
+
+openai: ['lethargy', 'weakness_in_limbs']
+regular stopwords extractor: ['coma', 'coma', 'cramps']
+medical stopwords extractor: ['coma', 'coma', 'cramps']
+noun extractor: ['coma', 'coma', 'cramps']
+
+
+DESCRIPTION: Me duelen la espalda y el cuello y me siento muy triste
+
+openai: ["back_pain", "neck_pain", "depression"]
+regular stopwords extractor: ['dolor_de_espalda', 'inestabilidad', 'cuello_rigido', 'estreñimiento', 'blister']
+medical stopwords extractor: ['dolor_de_espalda', 'inestabilidad', 'cuello_rigido', 'estreñimiento', 'blister']
+noun extractor: ['dolor_de_espalda', 'inestabilidad', 'cuello_rigido']
+
+
+DESCRIPTION: Me duelen la cabeza y el cuello
+
+openai: ["headache", "neck_pain"]
+regular stopwords extractor: ['cuello_rigido']
+medical stopwords extractor: ['cuello_rigido']
+noun extractor: ['cuello_rigido']
+
+
+DESCRIPTION: Siento algo pegajoso en la garganta que me hace toser
+
+openai: ['throat_irritation', 'cough']
+regular stopwords extractor: ['estreñimiento', 'headache', 'acidez', 'tos']
+medical stopwords extractor: ['estreñimiento', 'headache', 'acidez', 'tos']
+noun extractor: []
+
+
+

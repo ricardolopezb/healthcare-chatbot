@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC
+from nlp import symptoms, word_extractor, noun_token_extractor
 import csv
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -173,7 +174,9 @@ def tree_to_code(tree, feature_names):
         disease_input = input("")
         #TODO: aca hay que poner el intercepter de ortografia
         #checks the pattern of the input given by the user
-        conf,cnf_dis=check_pattern(chk_dis,disease_input) #agarra el input y lo matchea con las enfermedades devuelve 0,[] si no matchea, devuelve 1 y la lista d einputs si matchea alguno
+        found_symptoms = symptoms(noun_token_extractor(disease_input))
+        print("FOUND SYMPTOMS", found_symptoms)
+        conf,cnf_dis=check_pattern(chk_dis, found_symptoms[0]) #agarra el input y lo matchea con las enfermedades devuelve 0,[] si no matchea, devuelve 1 y la lista d einputs si matchea alguno
         if conf==1:
             print("searches related to input: ")
             for num,it in enumerate(cnf_dis):
