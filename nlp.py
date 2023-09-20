@@ -1,15 +1,17 @@
 import nltk
-nltk.download('wordnet')
-nltk.download('punkt')
-nltk.download('stopwords')
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 import difflib
+import ast
 import pandas as pd  # Import pandas library
 import spacy
 import openai
 import os
 from dotenv import load_dotenv
+
+nltk.download('wordnet')
+nltk.download('punkt')
+nltk.download('stopwords')
 
 load_dotenv()
 
@@ -34,6 +36,16 @@ def save_text_to_file(text, filename):
     with open(filename, 'a') as file:
         file.write(text+"\n\n")
 
+def parse_string_to_list(input_str):
+    try:
+        parsed_list = ast.literal_eval(input_str)
+        if isinstance(parsed_list, list):
+            return parsed_list
+        else:
+            raise ValueError("Input is not a valid list representation.")
+    except (SyntaxError, ValueError):
+        raise ValueError("Input is not a valid list representation.")
+
 def send_openai_request(text_input):
     df_train = pd.read_csv('./Data/Training.csv', delimiter=',') # try to optimize this
     vocab = df_train.columns.tolist()
@@ -52,8 +64,9 @@ def send_openai_request(text_input):
             '''
         }
     ]
-    )   
-    return response.choices[0].message.content
+    )
+    # TODO check if the returned response is of format [...]
+    return parse_string_to_list(response.choices[0].message.content)
 
 # This removes words that are in the stop words
 def word_extractor(sentence, stopwords):
@@ -125,20 +138,22 @@ descriptions = [
 ]
 
 
-for description in descriptions:
-    print(f"[LOG] - Tokenizing {description}")
-    result1 = ("openai", send_openai_request(description))
-    result2 = ("regular stopwords extractor", symptoms(word_extractor(description, stopwords.words())))
-    result3 = ("medical stopwords extractor", symptoms(word_extractor(description, medical_stopwords)))
-    result4 = ("noun extractor", symptoms(noun_token_extractor(description)))
 
-    results = [result1, result2, result3, result4]
 
-    string_to_save = f"DESCRIPTION: {description}\n\n"
-
-    for result in results:
-        string_to_save = string_to_save + f"{result[0]}: {result[1]}\n"
-    
-    save_text_to_file(string_to_save, "nlp_test_results.txt")
-
-print("[LOG] - Finished!")
+# for description in descriptions:
+#     print(f"[LOG] - Tokenizing {description}")
+#     result1 = ("openai", send_openai_request(description))
+#     result2 = ("regular stopwords extractor", symptoms(word_extractor(description, stopwords.words())))
+#     result3 = ("medical stopwords extractor", symptoms(word_extractor(description, medical_stopwords)))
+#     result4 = ("noun extractor", symptoms(noun_token_extractor(description)))
+#
+#     results = [result1, result2, result3, result4]
+#
+#     string_to_save = f"DESCRIPTION: {description}\n\n"
+#
+#     for result in results:
+#         string_to_save = string_to_save + f"{result[0]}: {result[1]}\n"
+#
+#     save_text_to_file(string_to_save, "nlp_test_results.txt")
+#
+# print("[LOG] - Finished!")
